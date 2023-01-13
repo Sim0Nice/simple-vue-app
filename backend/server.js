@@ -40,6 +40,10 @@ app.put("/profs/:id", function (req, res) {
     fs.readFile(filename, "utf8", function (err, data) {
         let dataAsObject = JSON.parse(data);
         dataAsObject[req.params.id].name = req.body.name;
+        dataAsObject[req.params.id].coord1 = req.body.coord1;
+        dataAsObject[req.params.id].coord1 = req.body.coord2;
+        dataAsObject[req.params.id].description = req.body.description;
+        dataAsObject[req.params.id].type = req.body.type;
         dataAsObject[req.params.id].rating = req.body.rating;
         fs.writeFile(filename, JSON.stringify(dataAsObject), () => {
             res.writeHead(200, {
@@ -70,7 +74,12 @@ app.post("/profs", function (req, res) {
             
             id: uuidv4(),
             name: req.body.name,
+            coord1: req.body.coord1,
+            coord2: req.body.coord2,
+            description: req.body.description,
+            type: req.body.type,
             rating: req.body.rating,
+        
         });
         fs.writeFile(filename, JSON.stringify(dataAsObject), () => {
             res.writeHead(200, {
