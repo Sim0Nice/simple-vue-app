@@ -15,6 +15,9 @@ export default defineConfig({
     include: [
       "@fawmi/vue-google-maps",
       "fast-deep-equal",
+      "mapbox-gl",
+      "vue-mapbox",
+      "map-promisified"
     ],
   },
 })
